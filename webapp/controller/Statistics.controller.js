@@ -12,11 +12,10 @@ sap.ui.define([
 			var chartData = [ {id:'barChart'}, {id:'columnChart'}, {id:'lineChart'} ]
 			var chartDiv;
 			var view = this.getView()
-
 			chartData.map(function(data, index){
-				chartDiv = new sap.ui.core.HTML(`${data.id}`);
-				chartDiv.setDOMContent(`<div id="${data.id}" style="overflow-y: hidden;"></div>`)
-				view.byId(`${data.id}`+'Container').addContent(chartDiv)
+				chartDiv = new sap.ui.core.HTML('' + data.id);
+				chartDiv.setDOMContent('<div id="' + data.id + '" style="overflow-y: hidden;"></div>');
+				view.byId('' + data.id + 'Container').addContent(chartDiv);
 			})
 		},
 
