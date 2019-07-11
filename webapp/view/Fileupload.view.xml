@@ -1,0 +1,57 @@
+<mvc:View
+        controllerName="sap.ui.demo.toolpageapp.controller.Fileupload"
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:u="sap.ui.unified"
+        xmlns:mvc="sap.ui.core.mvc"
+        class="viewPadding">
+    <!--uplpoad csv file-->
+    <Toolbar height="3rem">
+        <ToolbarSpacer></ToolbarSpacer>
+        <u:FileUploader
+            id="fileUploader" name="myFileUpload" uploadUrl="upload/" width="400px" tooltip="Upload your csv file"
+            uploadComplete="onUploadComplete" change="onValueChange" typeMissmatch="onTypeMismatch"
+            style="Emphasized" fileType="csv" placeholder="upload csv file~!" >
+        </u:FileUploader>
+        <Button text="Import" press="onUploadPress" type="Accept" icon="sap-icon://upload" width="90px" >
+        </Button>
+    </Toolbar>
+    <!--show csv file value to table-->
+    <Table id="itemsTable" inset="false" items="{/}" >
+        <columns>
+            <Column width="25%">
+                <Text text="Product" ></Text>
+            </Column>
+            <Column width="25%">
+                <Text text="ProductID" ></Text>
+            </Column>
+            <Column width="25%">
+                <Text text="Supplier" ></Text>
+            </Column>
+            <Column width="25%">
+                <Text text="Price" ></Text>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{Product}"></Text>
+                </cells>
+                <cells>
+                    <Text text="{Product ID}"></Text>
+                </cells>
+                <cells>
+                    <Text text="{Supplier}"></Text>
+                </cells>
+                <cells>
+                    <Text text="{Price}"></Text>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+<!--    <Bar id="bar8e">-->
+<!--        <contentRight>-->
+<!--            <Button text="Submit" width="100px" press="onSubmit" id="__buttons6" activeIcon="" type="Accept" icon="sap-icon://complete" ></Button>-->
+<!--        </contentRight>-->
+<!--    </Bar>-->
+</mvc:View>

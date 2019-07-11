@@ -1,0 +1,23 @@
+{
+  "name": "ToolPageApp",
+  "private": true,
+  "version": "1.0.0",
+  "author": "SAP SE",
+  "description": "UI5 Demo App - Toolpage App",
+  "scripts": {
+    "serve": "ui5 serve --open /index.html",
+    "opa": "uir serve --open /test/integration/opaTests.qunit.html",
+    "build": "ui5 build --all --dest ./webapp/dist"
+  },
+  "dependencies": {
+    "@openui5/sap.m": "^1",
+    "@openui5/sap.tnt": "^1",
+    "@openui5/sap.ui.core": "^1",
+    "@openui5/sap.ui.layout": "^1",
+    "@openui5/sap.ui.suite": "^1.67.1",
+    "@openui5/sap.ui.table": "^1.67.1",
+    "@openui5/sap.uxap": "^1",
+    "@openui5/themelib_sap_belize": "^1",
+    "tui-chart": "^3.7.0"
+  }
+}

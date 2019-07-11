@@ -1,0 +1,132 @@
+<mvc:View
+        controllerName="sap.ui.demo.toolpageapp.controller.GridTable"
+        xmlns="sap.ui.table"
+        xmlns:e="sap.ui.export"
+        xmlns:m="sap.m"
+        xmlns:u="sap.ui.unified"
+        xmlns:l="sap.ui.layout"
+        xmlns:c="sap.ui.core"
+        xmlns:mvc="sap.ui.core.mvc">
+    <m:Page
+            showHeader="false"
+            enableScrolling="false"
+            class="sapUiContentPadding">
+        <m:content>
+            <m:Button icon="sap-icon://excel-attachment"
+                      press="onDataExport"/>
+            <Table
+                    id="testTable"
+                    rows="{path: 'products>/ProductCollection'}"
+                    title="Products"
+                    selectionMode="MultiToggle"
+                    visibleRowCount="7"
+                    paste="onDataExport">
+                <columns>
+                    <Column width="11rem">
+                        <m:Label text="Product Name" />
+                        <template >
+                            <m:Text text="{products>Name}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="11rem">
+                        <m:Label text="Product Id" />
+                        <template>
+                            <m:Input value="{products>ProductId}"/>
+                        </template>
+                    </Column>
+                    <Column width="6rem" hAlign="End">
+                        <m:Label text="Quantity" />
+                        <template>
+                            <m:Label text="{products>Quantity}" />
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="Status" />
+                        <template>
+                            <m:ObjectStatus text="{products>Status}" state="{
+								path: 'products>Status',
+								formatter: '.formatAvailableToObjectState'
+							}"/>
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="Price" />
+                        <template>
+                            <u:Currency value="{products>Price}" currency="{products>CurrencyCode}"/>
+                        </template>
+                    </Column>
+                    <Column width="12rem">
+                        <m:Label text="Supplier" />
+                        <template >
+                            <m:ComboBox value="{products>SupplierName}"
+                                items="{path: 'products>/ProductCollectionStats/Filters/1/values', templateShareable : 'false'}">
+                                <c:Item text="{products>text}"/>
+                            </m:ComboBox>
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="Image" />
+                        <template>
+                            <m:Link text="Show Image" href="{products>ProductPicUrl}" target="_blank"/>
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="Details" />
+                        <template>
+                            <m:Button text="Show Details" press="handleDetailsPress"/>
+                        </template>
+                    </Column>
+                    <Column width="7rem">
+                        <m:Label text="Heavy Weight" />
+                        <template>
+                            <m:CheckBox selected="{
+								path: 'products>Heavy',
+								type: 'sap.ui.model.type.String'
+							}"/>
+                        </template>
+                    </Column>
+                    <Column width="12rem">
+                        <m:Label text="Main Category" />
+                        <template>
+                            <m:Select selectedKey="{products>Category}" items="{path: 'products>/ProductCollectionStats/Filters/0/values', templateShareable : 'false'}">
+                                <c:Item text="{products>text}" key="{products>data}"/>
+                            </m:Select>
+                        </template>
+                    </Column>
+                    <Column width="12rem">
+                        <m:Label text="Additional Categories" />
+                        <template>
+                            <m:MultiInput>
+                                <m:tokens>
+                                    <m:Token key="{Key}" text="{products>Name}"/>
+                                </m:tokens>
+                                <m:suggestionItems>
+                                    <c:Item key="{products>ProductId}" text="{products>Name}" />
+                                </m:suggestionItems>
+                            </m:MultiInput>
+                        </template>
+                    </Column>
+                    <Column width="6rem" hAlign="Center">
+                        <m:Label text="Status" />
+                        <template>
+                            <c:Icon src="{
+								path: 'products>Status',
+								formatter: '.formatAvailableToIcon'
+							}"/>
+                        </template>
+                    </Column>
+                    <Column width="11rem" hAlign="Center">
+                        <m:Label text="Delivery Date" />
+                        <template>
+                            <m:DatePicker placeholder="select date~!" value="{
+								path: 'DeliveryDate',
+								type: 'sap.ui.model.type.Date',
+								formatOptions: {source: {pattern: 'timestamp'},pattern:'dd/MM/yyyy'}
+							}"/>
+                        </template>
+                    </Column>
+                </columns>
+            </Table>
+        </m:content>
+    </m:Page>
+</mvc:View>
